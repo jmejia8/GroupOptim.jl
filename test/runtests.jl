@@ -2,23 +2,27 @@ using GroupOptim
 using Test
 
 
-function test_js()
+function test_mdvrp()
 
-    tasks = "task_" .* string.(1:100)
-    costs = rand(1:100, 100)
+    ncities = 15
+    ndepots = 3
+    cities = 1:ncities
 
-    items = tasks .=> costs
+    xy = 100rand(ncities, 2)
 
-    println(items)
+    distances = [sum(abs.(a - b)) for a in eachrow(xy), b in eachrow(xy)]
 
-    g = Group()
+    depots = Groups(ndepots, cities)
+    insert!(depots, 1, 1)
 
-    set_capacity_func!(g, items -> length(items))
-    set_items!(g, items)
+    display(depots[1])
+
+    #set_capacity_func!(g, items -> length(items))
+    #set_items!(g, items)
 
 end
 
 
-
+test_mdvrp()
 
 @test true
