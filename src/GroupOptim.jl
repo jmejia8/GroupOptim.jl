@@ -1,6 +1,7 @@
 module GroupOptim
 import Random
 
+abstract type AbsGroup end
 
 struct PushInsertion end
 struct PopDeletion end

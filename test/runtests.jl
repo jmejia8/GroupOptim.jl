@@ -12,10 +12,8 @@ function test_mdvrp()
 
     distances = [sum(abs.(a - b)) for a in eachrow(xy), b in eachrow(xy)]
 
-    depots = Groups(ndepots, cities)
-    insert!(depots, 1, 1)
-
-    display(depots[1])
+    depots = Groups(ndepots, cities, ordered=true)
+    # insert cities using method
 
     #set_capacity_func!(g, items -> length(items))
     #set_items!(g, items)
